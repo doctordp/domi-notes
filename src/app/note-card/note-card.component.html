@@ -1,0 +1,12 @@
+<div class="card">
+  <div style="float: right; margin-right: 3%;">
+    <button (click)="expand = !expand">+</button>
+    <button (click)="giveMeData()">Dame las notas</button>
+  </div>
+  <p>{{ fullCard.numero }}</p>
+  <div *ngIf="expand">
+    <p>Me expando!!</p>
+    <p>{{ fullCard.nombre }}</p>
+    <p>id: {{ fullCard._id }}</p>
+  </div>
+</div>

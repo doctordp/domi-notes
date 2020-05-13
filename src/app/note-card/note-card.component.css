@@ -1,0 +1,10 @@
+.card{
+    width: 74vw;
+    margin-left: 13vw;
+    margin: 0 auto;
+    /*padding: 20px;*/
+    background: rgba(50, 50, 50, 1);
+/*     margin-bottom: 25px; 
+ */    margin-top: 75px;
+    color: white;
+}
