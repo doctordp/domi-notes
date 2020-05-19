@@ -18,7 +18,7 @@ export class databaseRequestService {
       headers: { miHeader: 'mivalor' }
     }); */
 
-    this.allCards = await this.get('https://35.210.178.12:3004/m');
+    this.allCards = await this.get('https://domi-notes.domid.dev/m');
 
     console.log(this.allCards);
     return this.allCards;
@@ -44,7 +44,7 @@ export class databaseRequestService {
 
   public insertNewNote(titleNote: string, contentNote: string) {
     const http = new XMLHttpRequest();
-    http.open('POST', 'https://35.210.178.12:3004/addnewnote');
+    http.open('POST', 'https://domi-notes.domid.dev/addnewnote');
     http.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
     http.setRequestHeader('miHeader', 'mivalor');
 
