@@ -1,6 +1,28 @@
 <div class="backdrop" (click)="onClose()"></div>
 <div class="alert-box">
-  <p>hah</p>
+  <div>
+    <form [formGroup]="newNoteForm" (ngSubmit)="onSubmit()">
+      <div formGroupName="dataNote">
+        <label for="titleNote">Title</label> <br />
+        <input
+          formControlName="titleNote"
+          name="titleNote"
+          type="text"
+          cols="30"
+        />
+        <br />
+        <label for="contentNote">Content</label>
+        <textarea
+          formControlName="contentNote"
+          name="contentNote"
+          cols="30"
+          rows="10"
+        ></textarea>
+      </div>
+      <button type="submit">Save</button>
+    </form>
+  </div>
+
   <div class="alert-box-actions">
     <button (click)="onClose()">Close</button>
   </div>

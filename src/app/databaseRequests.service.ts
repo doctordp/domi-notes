@@ -5,7 +5,7 @@ import { catchError, retry, tap, map } from 'rxjs/operators';
 import { toDoNoteCard } from './todo-card.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class databaseRequestService {
   constructor(private http: HttpClient) {}
@@ -18,20 +18,20 @@ export class databaseRequestService {
       headers: { miHeader: 'mivalor' }
     }); */
 
-    this.allCards = await this.get('http://35.210.178.12:3004/m');
+    this.allCards = await this.get('https://35.210.178.12:3004/m');
 
     console.log(this.allCards);
     return this.allCards;
   }
 
   private get(url: string): Promise<any> {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       const http = new XMLHttpRequest();
       http.open('GET', url);
       http.setRequestHeader('miHeader', 'mivalue');
       http.send();
       console.log('llego');
-      http.onreadystatechange = function() {
+      http.onreadystatechange = function () {
         if (http.readyState == 4 && http.status == 200) {
           resolve(JSON.parse(http.responseText));
           console.log(JSON.parse(http.responseText));
@@ -40,5 +40,14 @@ export class databaseRequestService {
         }
       };
     });
+  }
+
+  public insertNewNote(titleNote: string, contentNote: string) {
+    const http = new XMLHttpRequest();
+    http.open('POST', 'https://35.210.178.12:3004/addnewnote');
+    http.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+    http.setRequestHeader('miHeader', 'mivalor');
+
+    http.send(JSON.stringify({ titleNote, contentNote }));
   }
 }

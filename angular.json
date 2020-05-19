@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "domi-notes"
+    }
+  },
+  "defaultProject": "domi-notes",
+  "cli": {
+    "analytics": false
+  }
 }

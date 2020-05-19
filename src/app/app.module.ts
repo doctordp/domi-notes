@@ -8,6 +8,7 @@ import { MainContentComponent } from './main-content/main-content.component';
 import { NoteCardComponent } from './note-card/note-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewNoteComponent } from './new-note/new-note.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,14 +16,15 @@ import { NewNoteComponent } from './new-note/new-note.component';
     HeaderComponent,
     MainContentComponent,
     NoteCardComponent,
-    NewNoteComponent
+    NewNoteComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
