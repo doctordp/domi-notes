@@ -1,13 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { databaseRequestService } from '../databaseRequests.service';
 import { toDoNoteCard } from '../todo-card.interface';
 
 @Component({
   selector: 'app-note-card',
   templateUrl: './note-card.component.html',
-  styleUrls: ['./note-card.component.css']
+  styleUrls: ['./note-card.component.css'],
 })
 export class NoteCardComponent implements OnInit {
+  @Output() public needToReload: EventEmitter<any> = new EventEmitter<any>();
   @Input() fullCard: toDoNoteCard;
   public expand: boolean = false;
 
@@ -20,4 +21,9 @@ export class NoteCardComponent implements OnInit {
     console.log(this.databaseData.allCards);
   }
   ngOnInit(): void {}
+
+  removeCard(idCard: string): void {
+    this.needToReload.emit(idCard);
+    ///this.databaseData.removeSingleCard(idCard);
+  }
 }

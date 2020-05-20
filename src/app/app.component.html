@@ -5,14 +5,19 @@
 <app-new-note
   *ngIf="toCreateNew"
   (closeNewNote)="toCreateNew = !toCreateNew"
+  (reloadNewNote)="reloadingNew()"
   style="z-index: 1000;"
 ></app-new-note>
-<app-note-card
-  class="carde"
-  style="z-index: 1;"
-  *ngFor="let card of cards"
-  [fullCard]="card"
-></app-note-card>
+<div *ngIf="reloadReq" class="lds-dual-ring"></div>
+<div *ngIf="!reloadReq">
+  <app-note-card
+    class="carde"
+    style="z-index: 1;"
+    *ngFor="let card of cards"
+    [fullCard]="card"
+    (needToReload)="removed($event)"
+  ></app-note-card>
+</div>
 
 <!-- <div class="carde" *ngIf="welcome">
   <p (click)="wtf()">

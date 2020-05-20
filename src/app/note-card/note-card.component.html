@@ -7,6 +7,7 @@
   <div *ngIf="expand">
     <p>Me expando!!</p>
     <p>{{ fullCard.nombre }}</p>
-    <p>id: {{ fullCard._id }}</p>
+    <p>{{ fullCard._id }}</p>
+    <button (click)="removeCard(fullCard._id)">Remove!</button>
   </div>
 </div>

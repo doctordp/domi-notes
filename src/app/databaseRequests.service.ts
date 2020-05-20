@@ -13,10 +13,6 @@ export class databaseRequestService {
   async getToDoCards() {
     console.log('llegamás');
     this.allCards = [];
-    //console.log(this.http.get<string>("http://35.210.178.12:3004/m"));
-    /* this.allCards = await this.http.get('http://35.210.178.12:3004/m', {
-      headers: { miHeader: 'mivalor' }
-    }); */
 
     this.allCards = await this.get('https://domi-notes.domid.dev/m');
 
@@ -43,11 +39,24 @@ export class databaseRequestService {
   }
 
   public insertNewNote(titleNote: string, contentNote: string) {
-    const http = new XMLHttpRequest();
-    http.open('POST', 'https://domi-notes.domid.dev/addnewnote');
-    http.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-    http.setRequestHeader('miHeader', 'mivalor');
+    return this.http
+      .post(
+        'https://domi-notes.domid.dev/addnewnote',
+        JSON.stringify({ titleNote, contentNote }),
+        {
+          headers: {
+            'Content-Type': 'application/json;charset=UTF-8',
+          },
+        }
+      )
+      .toPromise();
+  }
 
-    http.send(JSON.stringify({ titleNote, contentNote }));
+  public removeSingleCard(idCard: string) {
+    return this.http
+      .delete('https://domi-notes.domid.dev/removeone', {
+        headers: { idToRemove: idCard },
+      })
+      .toPromise();
   }
 }

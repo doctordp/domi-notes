@@ -9,6 +9,7 @@ import { databaseRequestService } from '../databaseRequests.service';
 })
 export class NewNoteComponent implements OnInit {
   @Output() closeNewNote = new EventEmitter<void>();
+  @Output() reloadNewNote = new EventEmitter<void>();
   newNoteForm: FormGroup;
   public onClose() {
     this.closeNewNote.emit();
@@ -27,12 +28,15 @@ export class NewNoteComponent implements OnInit {
 
   onSubmit() {
     console.log('submited!');
-    console.log(this.newNoteForm);
-    console.log(this.newNoteForm.value);
-    this.databaseReq.insertNewNote(
-      this.newNoteForm.value.dataNote.titleNote,
-      this.newNoteForm.value.dataNote.contentNote
-    );
-    this.onClose();
+    this.databaseReq
+      .insertNewNote(
+        this.newNoteForm.value.dataNote.titleNote,
+        this.newNoteForm.value.dataNote.contentNote
+      )
+      .then((data) => {
+        this.reloadNewNote.emit();
+        this.onClose();
+      })
+      .catch((error) => console.log(error));
   }
 }

@@ -1,9 +1,9 @@
-<div class="maincard"
->
-<app-note-card 
-*ngFor="let card of cards" 
-class="card"
-[fullCard]="card"
->
-</app-note-card>
+<div class="maincard" *ngIf="reload">
+  <app-note-card
+    *ngFor="let card of cards"
+    (needToReload)="reloading()"
+    class="card"
+    [fullCard]="card"
+  >
+  </app-note-card>
 </div>

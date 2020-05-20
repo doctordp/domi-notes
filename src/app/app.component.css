@@ -8,13 +8,39 @@
   z-index: -6;
 }
 
-.carde{
-    width: 74vw;
-margin-left: 13vw;
-margin: 0 auto;
-/*padding: 20px;*/
-background: rgba(50, 50, 50, 1);
-/*     margin-bottom: 25px; 
-*/    margin-top: 75px;
-color: white;
+.carde {
+  width: 74vw;
+  margin-left: 13vw;
+  margin: 0 auto;
+  background: rgba(50, 50, 50, 1);
+  margin-top: 75px;
+  color: white;
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 20vh;
+  height: 20vh;
+  position: relative;
+  margin-top: 20vh;
+  margin-left: 40%;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
