@@ -18,8 +18,27 @@ export class AppComponent implements OnInit {
   constructor(private databaseReq: databaseRequestService) {}
 
   async ngOnInit() {
-    this.cards = await this.databaseReq.getToDoCards();
     console.log(this.cards.length);
+    const queryParamsString = window.location.search.substr(1);
+    const queryParams = queryParamsString.split('&').reduce(
+      (accumulator, singleQueryParam) => {
+        const [key, value] = singleQueryParam.split('=');
+        accumulator[key] = value;
+        return accumulator;
+      },
+      { token: 'default' }
+    );
+    console.log(queryParams.token);
+    localStorage.setItem(
+      'token',
+      queryParams.token && queryParams.token != 'undefined'
+        ? queryParams.token
+        : 'default'
+    );
+
+    this.cards = await this.databaseReq.getToDoCards();
+    console.log(localStorage);
+    console.log(localStorage.token);
   }
   public noNotes() {
     console.log(this.cards.length);

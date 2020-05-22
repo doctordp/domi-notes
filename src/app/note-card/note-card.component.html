@@ -5,9 +5,7 @@
   </div>
   <p>{{ fullCard.nombre }}</p>
   <div *ngIf="expand">
-    <p>Me expando!!</p>
-    <p>{{ fullCard.nombre }}</p>
-    <p>{{ fullCard._id }}</p>
+    <p>{{ fullCard.contenido }}</p>
     <button (click)="removeCard(fullCard._id)">Remove!</button>
   </div>
 </div>

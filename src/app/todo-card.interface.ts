@@ -1,5 +1,5 @@
 export interface toDoNoteCard {
-    _id: string,
-    numero: number,
-    nombre: string,
+  _id: string;
+  contenido: string;
+  nombre: string;
 }
